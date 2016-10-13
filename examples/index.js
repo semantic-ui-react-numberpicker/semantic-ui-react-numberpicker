@@ -85,6 +85,8 @@ var App = React.createClass({
                 <br />
                 <Button>Submit Form</Button>
                 <Segment>Form Data: {JSON.stringify(this.state.serializedForm)}</Segment>
+
+                <a href="examples/index.js">Download the JS file which creates this demo</a>
             </Form>
             </div>
         );

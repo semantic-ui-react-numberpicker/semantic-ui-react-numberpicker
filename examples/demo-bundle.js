@@ -8361,6 +8361,11 @@
 	                    null,
 	                    'Form Data: ',
 	                    (0, _stringify2.default)(this.state.serializedForm)
+	                ),
+	                _react2.default.createElement(
+	                    'a',
+	                    { href: 'examples/index.js' },
+	                    'Download the JS file which creates this demo'
 	                )
 	            )
 	        );
