@@ -34,7 +34,7 @@ module.exports = {
         extensions: ['', '.js', '.es6']
     },
     output:{
-        path: [__dirname, 'build'].join(path.sep),
+        path: [__dirname, 'examples'].join(path.sep),
         filename: 'demo-bundle.js'
     },
     module:{

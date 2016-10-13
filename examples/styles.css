@@ -1,0 +1,33 @@
+.container {
+    max-width: 56em;
+    margin: 0 auto;
+}
+.task-list {
+    list-style-type: none;
+}
+.task {
+    display: block;
+    padding: 5px;
+    border: 1px solid #999;
+    background: #efefef;
+}
+.task + .task {
+    margin-top: 10px;
+}
+.task.completed {
+    border-color:  #333;
+    background: #aeaeae;
+}
+
+.ui.action.both.input > input {
+    border-top-left-radius: 0px !important;
+    border-bottom-left-radius: 0px !important;
+    /*border-left-color: transparent !important;*/
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
