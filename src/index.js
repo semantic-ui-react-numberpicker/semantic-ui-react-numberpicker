@@ -18,18 +18,14 @@ export const INCREASE_VALUE = 'INCREASE_VALUE';
 const NumberPicker = React.createClass({
     getDefaultProps: function () {
         return {
-            name: "value",
-            label: "Pick a number",
             placeholder: "Enter a number",
-            defaultValue: 0,
-            value: 1,
             /*
-             Setting min, max value to 1e10 to prevent javascript to switch into scientific notation
+             Limiting min, max value to 1e10 to prevent javascript to switch into scientific notation
              */
             min: 1e10 * -1,
             max: 1e10,
             maxLength: 10,
-            step: "any",
+            step: 1,
             required: false,
             basic: false,
             circular: false,
@@ -38,20 +34,21 @@ const NumberPicker = React.createClass({
     },
     propTypes: {
         name: React.PropTypes.string.isRequired,
-        //defaultValue: React.PropTypes.number,
+        value: React.PropTypes.any.isRequired,
+        onChange: React.PropTypes.func.isRequired,
+        placeholder: React.PropTypes.string,
         min: React.PropTypes.number,
         max: React.PropTypes.number,
+        step: React.PropTypes.number,
         maxLength: React.PropTypes.number,
         required: React.PropTypes.bool,
         basic: React.PropTypes.bool,
         circular: React.PropTypes.bool,
-        compact: React.PropTypes.bool,
-        //value: React.PropTypes.object.isRequired,
-        onChange: React.PropTypes.func.isRequired
+        compact: React.PropTypes.bool
     },
     getInitialState: function () {
         return {
-            numValue: this.props.value || this.props.defaultValue,
+            touched: false,
             buffer: {}
         };
     },
@@ -59,7 +56,7 @@ const NumberPicker = React.createClass({
         let actionFilter = event.currentTarget.name;
         let currentValue = event.currentTarget.value.replace(",", ".");
 
-        var setVal = (_.isFinite(parseFloat(this.props.value))) ? parseFloat(this.props.value) : this.props.defaultValue;
+        var setVal = (_.isFinite(parseFloat(this.props.value))) ? parseFloat(this.props.value) : null;
         console.log("handleAction", actionFilter, currentValue, this.props.value, setVal, event, event.target.value, v);
         console.log("props.value", this.props.value);
         console.log("currentValue", currentValue);
@@ -117,11 +114,9 @@ const NumberPicker = React.createClass({
         switch (actionFilter) {
             case this.props.name:
                 let parsedVal = parseFloat(currentValue);
+                setVal = (_.isFinite(parsedVal)) ? parsedVal : null;
 
-                console.log("numValue", currentValue, parsedVal, currentValue.length);
-                setVal = (_.isFinite(parsedVal)) ? parsedVal : this.props.defaultValue;
-
-                if (this.props.value > this.props.max)
+                if (parsedVal > this.props.max)
                     setVal = this.props.max;
                 break;
 
@@ -130,8 +125,6 @@ const NumberPicker = React.createClass({
             default:
                 break;
         }
-
-        this.setState({numValue: setVal});
     },
     style: {
         default: {
@@ -172,9 +165,9 @@ const NumberPicker = React.createClass({
                         style={style.buttonLeft} disabled={(this.props.value <= this.props.min)}/>
                 <input type="text" name={this.props.name} min={this.props.min} max={this.props.max}
                        step={this.props.step}
-                       maxLength={this.props.maxLength} placeholder="Enter number" required={this.props.required}
+                       maxLength={this.props.maxLength} placeholder={this.props.placeholder} required={this.props.required}
                        value={this.props.value}
-                       onChange={this.handleAction} onBlur={this.validateInput} style={style.input} ref="cc"/>
+                       onChange={this.handleAction} onBlur={this.validateInput} style={style.input}/>
                 <Button {...display} type="button" icon='plus' onClick={this.handleAction} name={INCREASE_VALUE}
                         style={style.buttonRight} disabled={(this.props.value >= this.props.max)}/>
             </Input>
