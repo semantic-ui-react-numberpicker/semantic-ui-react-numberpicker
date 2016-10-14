@@ -8206,7 +8206,9 @@
 
 	    getInitialState: function getInitialState() {
 	        return {
-	            serializedForm: {}
+	            serializedForm: {
+	                children: 0
+	            }
 	        };
 	    },
 	    getValue: function getValue(field) {

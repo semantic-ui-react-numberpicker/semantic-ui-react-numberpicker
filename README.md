@@ -4,6 +4,8 @@ Number Picker Component based on Semantic UI React
 ##Demo
 https://semantic-ui-react-numberpicker.github.io/semantic-ui-react-numberpicker/
 
+Semantic-UI-NumberPicker is based on <a href="http://react.semantic-ui.com/">Semantic-UI-React</a> and needs it as a dependency.
+
 ##Install
     npm i semantic-ui-react-numberpicker --save
     
@@ -62,4 +64,7 @@ Since the component is stateless you need to provide value and an onChange funct
         circular: React.PropTypes.bool,
         compact: React.PropTypes.bool,
         
+##More Reads
+<a href="http://semantic-ui.com/">Semantic-UI</a>
 
+<a href="http://react.semantic-ui.com/">Semantic-UI-React</a>

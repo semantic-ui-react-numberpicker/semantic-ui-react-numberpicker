@@ -11,6 +11,7 @@ var App = React.createClass({
     getInitialState: function () {
         return {
             serializedForm: {
+                children: 0
             }
         };
     },
@@ -33,19 +34,23 @@ var App = React.createClass({
             <div style={{width: 600, marginLeft: "auto", marginRight: "auto"}}>
             <Form onSubmit={this.handleSubmit}>
                 <h1>Number Picker Demos</h1>
+
+                Semantic-UI-NumberPicker is based on <a href="http://react.semantic-ui.com/">Semantic-UI-React</a> and needs it as a dependency.
+
                 <Divider horizontal>Default number picker</Divider>
                 <NumberPicker name="numberPicker" value={this.getValue("numberPicker")} onChange={this.updateNumberPicker} /><br />
-                <Message>{'<NumberPicker name="children" value={this.getValue("children")} onChange={this.updateNumberPicker} />'}</Message>
+                <Message>{'<NumberPicker name="children" value={this.getValue("numberPicker")} onChange={this.updateNumberPicker} />'}</Message>
 
 
 
                 <Divider horizontal>With label and minimum property set to 0</Divider>
-                <label>How many Children do you have</label>
+                <label>How many Children do you have</label><br />
                 <NumberPicker name="children" value={this.getValue("children")} onChange={this.updateNumberPicker} min={0} /><br />
 
                 <Message>{'<NumberPicker name="children" value={this.getValue("children")} onChange={this.updateNumberPicker} min={0} />'}</Message>
 
                 <Divider horizontal>With 100py width and <b>min</b> property set to 0</Divider>
+                <label>How many Children do you have</label><br />
                 <div style={{width: 100}}><NumberPicker name="children" value={this.getValue("children")} onChange={this.updateNumberPicker} min={0} /></div>
                 <Message>{'<div style={{width: 100}}><NumberPicker name="children" value={this.getValue("children")} onChange={this.updateNumberPicker} min={0} /></div>'}</Message>
 
