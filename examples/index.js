@@ -11,7 +11,7 @@ var App = React.createClass({
     getInitialState: function () {
         return {
             serializedForm: {
-                children: 0
+                children: 'nnn'
             }
         };
     },
@@ -29,6 +29,7 @@ var App = React.createClass({
         e.preventDefault();
         this.setState({serializedForm});
     },
+    text: func,
     render: function () {
         return (
             <div style={{width: 600, marginLeft: "auto", marginRight: "auto"}}>
@@ -49,7 +50,7 @@ var App = React.createClass({
 
                 <Message>{'<NumberPicker name="children" value={this.getValue("children")} onChange={this.updateNumberPicker} min={0} />'}</Message>
 
-                <Divider horizontal>With 100py width and <b>min</b> property set to 0</Divider>
+                <Divider horizontal>With 100px width and <b>min</b> property set to 0</Divider>
                 <label>How many Children do you have</label><br />
                 <div style={{width: 100}}><NumberPicker name="children" value={this.getValue("children")} onChange={this.updateNumberPicker} min={0} /></div>
                 <Message>{'<div style={{width: 100}}><NumberPicker name="children" value={this.getValue("children")} onChange={this.updateNumberPicker} min={0} /></div>'}</Message>
@@ -91,7 +92,9 @@ var App = React.createClass({
                 <Button>Submit Form</Button>
                 <Segment>Form Data: {JSON.stringify(this.state.serializedForm)}</Segment>
 
-                <a href="examples/index.js">Download the JS file which creates this demo</a>
+
+                <a href="examples/index.js">Download the JS file which creates this demo</a><br />
+                <a href="https://github.com/semantic-ui-react-numberpicker/semantic-ui-react-numberpicker">semantic-ui-react-numberpicker on GitHub</a>
             </Form>
             </div>
         );
