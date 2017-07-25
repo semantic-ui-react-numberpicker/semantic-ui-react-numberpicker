@@ -10,7 +10,7 @@ Semantic-UI-NumberPicker is based on <a href="http://react.semantic-ui.com/">Sem
     npm i semantic-ui-react-numberpicker --save
     
 ## Prerequisites.
-react, react-dom, semantic-ui-react
+react, react-dom, semantic-ui-react, lodash
 
 ## How to use
 Since the component is stateless you need to provide the value and an onChange function.
