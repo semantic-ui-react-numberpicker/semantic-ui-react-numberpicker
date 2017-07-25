@@ -67,7 +67,6 @@ const NumberPicker = React.createClass({
 
                 break;
             case INCREASE_VALUE:
-                console.log("validation increase", (setVal + stepSize <= this.props.max), setVal, this.props.value, stepSize);
                 if (setVal + stepSize <= this.props.max)
                     setVal += stepSize;
                 else
@@ -79,10 +78,9 @@ const NumberPicker = React.createClass({
                 if (currentValue === "-")
                     this.state.buffer = "-";
 
-                if (parsedVal > this.props.max || parsedVal < this.props.min)
-                    console.log("zu gross oder klein");
-                else
-                    setVal = currentValue;
+		if (!(parsedVal > this.props.max || parsedVal < this.props.min)) {
+		  setVal = currentValue;
+		}
 
                 break;
         }
@@ -97,14 +95,11 @@ const NumberPicker = React.createClass({
         if (setVal === "" || setVal === "-" || lastChar === "." || lastChar === ",")
             returnValue = setVal;
 
-        console.log("returning ", {name: this.props.name, value: returnValue});
         setTimeout(this.props.onChange, 1, {name: this.props.name, value: returnValue});
     },
     validateInput: function (event, v) {
         let actionFilter = event.target.name;
         let currentValue = event.target.value;
-
-        console.log("validate", actionFilter, currentValue);
 
         var setVal = this.props.value;
         switch (actionFilter) {
@@ -152,7 +147,6 @@ const NumberPicker = React.createClass({
 
     },
     render: function () {
-        //console.log("render", this.props, this.state);
         var style = (this.props.circular) ? this.style.circular : this.style.default;
         var display = {circular: this.props.circular, basic: this.props.basic, compact: this.props.compact};
         return (
