@@ -14,7 +14,7 @@ export const INCREASE_VALUE = 'INCREASE_VALUE';
  <Form.Field width="8" control={NumberPicker} circular label="circular buttons" placeholder="Enter a number" defaultValue={6} min={-41} max={45} step={1} />
  <Form.Field width="8" control={NumberPicker} basic label="basic buttons" placeholder="Enter a number" defaultValue={4} min={-40} max={40} step={2} />
 
- */
+*/
 const NumberPicker = React.createClass({
     getDefaultProps: function () {
         return {
@@ -78,9 +78,9 @@ const NumberPicker = React.createClass({
                 if (currentValue === "-")
                     this.state.buffer = "-";
 
-		if (!(parsedVal > this.props.max || parsedVal < this.props.min)) {
-		  setVal = currentValue;
-		}
+                if (!(parsedVal > this.props.max || parsedVal < this.props.min)) {
+                    setVal = currentValue;
+                }
 
                 break;
         }
