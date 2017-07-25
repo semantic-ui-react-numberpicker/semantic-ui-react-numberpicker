@@ -29,7 +29,11 @@ const NumberPicker = React.createClass({
             required: false,
             basic: false,
             circular: false,
-            compact: false
+            compact: false,
+	    classname_button_minus: "number_picker_button_minus",
+	    classname_button_plus: "number_picker_button_plus",
+	    classname_outer_input: "number_picker",
+	    classname_inner_input: "number_picker_input"
         };
     },
     propTypes: {
@@ -150,16 +154,17 @@ const NumberPicker = React.createClass({
         var style = (this.props.circular) ? this.style.circular : this.style.default;
         var display = {circular: this.props.circular, basic: this.props.basic, compact: this.props.compact};
         return (
-            <Input>
+            <Input className={this.props.classname_outer_input}>
                 <Button {...display} type="button" icon='minus' onClick={this.handleAction} name={DECREASE_VALUE}
-                        style={style.buttonLeft} disabled={(this.props.value <= this.props.min)}/>
+                        style={style.buttonLeft} disabled={(this.props.value <= this.props.min)} className={this.props.classname_button_minus}/>
                 <input type="text" name={this.props.name} min={this.props.min} max={this.props.max}
                        step={this.props.step}
+                       className={this.props.classname_inner_input}
                        maxLength={this.props.maxLength} placeholder={this.props.placeholder} required={this.props.required}
                        value={this.props.value}
                        onChange={this.handleAction} onBlur={this.validateInput} style={style.input}/>
                 <Button {...display} type="button" icon='plus' onClick={this.handleAction} name={INCREASE_VALUE}
-                        style={style.buttonRight} disabled={(this.props.value >= this.props.max)}/>
+                        style={style.buttonRight} disabled={(this.props.value >= this.props.max)}  className={this.props.classname_button_plus}/>
             </Input>
         );
     }
