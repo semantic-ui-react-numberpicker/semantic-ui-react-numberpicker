@@ -57,10 +57,6 @@ const NumberPicker = React.createClass({
         let currentValue = event.currentTarget.value.replace(",", ".");
 
         var setVal = (_.isFinite(parseFloat(this.props.value))) ? parseFloat(this.props.value) : null;
-        console.log("handleAction", actionFilter, currentValue, this.props.value, setVal, event, event.target.value, v);
-        console.log("props.value", this.props.value);
-        console.log("currentValue", currentValue);
-        console.log("setVal", setVal);
         let stepSize = (_.isFinite(parseFloat(this.props.step))) ? parseFloat(this.props.step) : 1;
         switch (actionFilter) {
             case DECREASE_VALUE:
