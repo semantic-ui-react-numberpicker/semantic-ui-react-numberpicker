@@ -14,7 +14,7 @@ export const INCREASE_VALUE = 'INCREASE_VALUE';
  <Form.Field width="8" control={NumberPicker} circular label="circular buttons" placeholder="Enter a number" defaultValue={6} min={-41} max={45} step={1} />
  <Form.Field width="8" control={NumberPicker} basic label="basic buttons" placeholder="Enter a number" defaultValue={4} min={-40} max={40} step={2} />
 
- */
+*/
 const NumberPicker = React.createClass({
     getDefaultProps: function () {
         return {
@@ -29,7 +29,11 @@ const NumberPicker = React.createClass({
             required: false,
             basic: false,
             circular: false,
-            compact: false
+            compact: false,
+	    classname_button_minus: "number_picker_button_minus",
+	    classname_button_plus: "number_picker_button_plus",
+	    classname_outer_input: "number_picker",
+	    classname_inner_input: "number_picker_input"
         };
     },
     propTypes: {
@@ -57,10 +61,6 @@ const NumberPicker = React.createClass({
         let currentValue = event.currentTarget.value.replace(",", ".");
 
         var setVal = (_.isFinite(parseFloat(this.props.value))) ? parseFloat(this.props.value) : null;
-        console.log("handleAction", actionFilter, currentValue, this.props.value, setVal, event, event.target.value, v);
-        console.log("props.value", this.props.value);
-        console.log("currentValue", currentValue);
-        console.log("setVal", setVal);
         let stepSize = (_.isFinite(parseFloat(this.props.step))) ? parseFloat(this.props.step) : 1;
         switch (actionFilter) {
             case DECREASE_VALUE:
@@ -71,7 +71,6 @@ const NumberPicker = React.createClass({
 
                 break;
             case INCREASE_VALUE:
-                console.log("validation increase", (setVal + stepSize <= this.props.max), setVal, this.props.value, stepSize);
                 if (setVal + stepSize <= this.props.max)
                     setVal += stepSize;
                 else
@@ -83,10 +82,9 @@ const NumberPicker = React.createClass({
                 if (currentValue === "-")
                     this.state.buffer = "-";
 
-                if (parsedVal > this.props.max || parsedVal < this.props.min)
-                    console.log("zu gross oder klein");
-                else
+                if (!(parsedVal > this.props.max || parsedVal < this.props.min)) {
                     setVal = currentValue;
+                }
 
                 break;
         }
@@ -101,14 +99,11 @@ const NumberPicker = React.createClass({
         if (setVal === "" || setVal === "-" || lastChar === "." || lastChar === ",")
             returnValue = setVal;
 
-        console.log("returning ", {name: this.props.name, value: returnValue});
         setTimeout(this.props.onChange, 1, {name: this.props.name, value: returnValue});
     },
     validateInput: function (event, v) {
         let actionFilter = event.target.name;
         let currentValue = event.target.value;
-
-        console.log("validate", actionFilter, currentValue);
 
         var setVal = this.props.value;
         switch (actionFilter) {
@@ -156,20 +151,20 @@ const NumberPicker = React.createClass({
 
     },
     render: function () {
-        //console.log("render", this.props, this.state);
         var style = (this.props.circular) ? this.style.circular : this.style.default;
         var display = {circular: this.props.circular, basic: this.props.basic, compact: this.props.compact};
         return (
-            <Input>
+            <Input className={this.props.classname_outer_input}>
                 <Button {...display} type="button" icon='minus' onClick={this.handleAction} name={DECREASE_VALUE}
-                        style={style.buttonLeft} disabled={(this.props.value <= this.props.min)}/>
+                        style={style.buttonLeft} disabled={(this.props.value <= this.props.min)} className={this.props.classname_button_minus}/>
                 <input type="text" name={this.props.name} min={this.props.min} max={this.props.max}
                        step={this.props.step}
+                       className={this.props.classname_inner_input}
                        maxLength={this.props.maxLength} placeholder={this.props.placeholder} required={this.props.required}
                        value={this.props.value}
                        onChange={this.handleAction} onBlur={this.validateInput} style={style.input}/>
                 <Button {...display} type="button" icon='plus' onClick={this.handleAction} name={INCREASE_VALUE}
-                        style={style.buttonRight} disabled={(this.props.value >= this.props.max)}/>
+                        style={style.buttonRight} disabled={(this.props.value >= this.props.max)}  className={this.props.classname_button_plus}/>
             </Input>
         );
     }

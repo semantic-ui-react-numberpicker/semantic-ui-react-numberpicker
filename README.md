@@ -1,19 +1,19 @@
 # semantic-ui-react-numberpicker
 Number Picker Component based on Semantic UI React
 
-##Demo
+## Demo
 https://semantic-ui-react-numberpicker.github.io/semantic-ui-react-numberpicker/
 
 Semantic-UI-NumberPicker is based on <a href="http://react.semantic-ui.com/">Semantic-UI-React</a> and needs it as a dependency.
 
-##Install
+## Install
     npm i semantic-ui-react-numberpicker --save
     
-##Prerequisites.
-react, react-dom, semantic-ui-react
+## Prerequisites.
+react, react-dom, semantic-ui-react, lodash
 
-##How to use
-Since the component is stateless you need to provide value and an onChange function.
+## How to use
+Since the component is stateless you need to provide the value and an onChange function.
 
 **import with:**
 
@@ -52,7 +52,7 @@ Since the component is stateless you need to provide value and an onChange funct
             maxLength={3} />
     );
 
-##Additional Properties:
+## Additional Properties:
        
         placeholder: React.PropTypes.string
         min: React.PropTypes.number,
@@ -64,7 +64,7 @@ Since the component is stateless you need to provide value and an onChange funct
         circular: React.PropTypes.bool,
         compact: React.PropTypes.bool,
         
-##More Reads
+## More Reads
 <a href="http://semantic-ui.com/">Semantic-UI</a>
 
 <a href="http://react.semantic-ui.com/">Semantic-UI-React</a>
