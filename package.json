@@ -43,6 +43,6 @@
     "lodash": "^4.16.2",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
-    "semantic-ui-react": "^0.54.3"
+    "semantic-ui-react": "^0.71.3"
   }
 }
