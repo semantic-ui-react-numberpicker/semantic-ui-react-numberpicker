@@ -54,10 +54,11 @@ Since the component is stateless you need to provide the value and an onChange f
 
 ## Additional Properties:
        
-        placeholder: React.PropTypes.string
+        placeholder: React.PropTypes.string,
+        id: React.PropTypes.string,
         min: React.PropTypes.number,
         max: React.PropTypes.number,
-        step:
+        step: React.PropTypes.number,
         maxLength: React.PropTypes.number,
         required: React.PropTypes.bool,
         basic: React.PropTypes.bool,
