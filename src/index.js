@@ -29,21 +29,6 @@ class NumberPicker extends React.Component {
 
     constructor() {
         super();
-        this.propTypes = {
-            name: React.PropTypes.string.isRequired,
-            id: React.PropTypes.string,
-            value: React.PropTypes.any.isRequired,
-            onChange: React.PropTypes.func.isRequired,
-            placeholder: React.PropTypes.string,
-            min: React.PropTypes.number,
-            max: React.PropTypes.number,
-            step: React.PropTypes.number,
-            maxLength: React.PropTypes.number,
-            required: React.PropTypes.bool,
-            basic: React.PropTypes.bool,
-            circular: React.PropTypes.bool,
-            compact: React.PropTypes.bool
-        };
         this.style = {
             default: {
                 input: {
@@ -76,6 +61,11 @@ class NumberPicker extends React.Component {
         this.handleAction = this.handleAction.bind(this);
         this.validateInput = this.validateInput.bind(this);
 
+        this.state = {
+            touched: false,
+            buffer: {}
+        };
+
     }
 
     static get defaultProps() {
@@ -97,13 +87,6 @@ class NumberPicker extends React.Component {
             classname_button_plus: "number_picker_button_plus",
             classname_outer_input: "number_picker",
             classname_inner_input: "number_picker_input"
-        };
-    }
-
-    getInitialState() {
-        return {
-            touched: false,
-            buffer: {}
         };
     }
 
@@ -273,5 +256,21 @@ class NumberPicker extends React.Component {
         );
     }
 }
+
+NumberPicker.propTypes = {
+    name: React.PropTypes.string.isRequired,
+    id: React.PropTypes.string,
+    value: React.PropTypes.any.isRequired,
+    onChange: React.PropTypes.func.isRequired,
+    placeholder: React.PropTypes.string,
+    min: React.PropTypes.number,
+    max: React.PropTypes.number,
+    step: React.PropTypes.number,
+    maxLength: React.PropTypes.number,
+    required: React.PropTypes.bool,
+    basic: React.PropTypes.bool,
+    circular: React.PropTypes.bool,
+    compact: React.PropTypes.bool
+};
 
 export default NumberPicker;
