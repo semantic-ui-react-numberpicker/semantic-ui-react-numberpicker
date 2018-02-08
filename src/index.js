@@ -44,7 +44,6 @@ class NumberPicker extends React.Component {
             circular: React.PropTypes.bool,
             compact: React.PropTypes.bool
         };
-
         this.style = {
             default: {
                 input: {
@@ -74,6 +73,8 @@ class NumberPicker extends React.Component {
             }
 
         };
+        this.handleAction = this.handleAction.bind(this);
+        this.validateInput = this.validateInput.bind(this);
 
     }
 
@@ -106,7 +107,6 @@ class NumberPicker extends React.Component {
             buffer: {}
         };
     }
-
 
     handleAction(event, v) {
         let actionFilter = event.currentTarget.name;
@@ -157,7 +157,6 @@ class NumberPicker extends React.Component {
         });
     }
 
-
     validateInput(event, v) {
         let actionFilter = event.target.name;
         let currentValue = event.target.value;
@@ -178,7 +177,6 @@ class NumberPicker extends React.Component {
                 break;
         }
     }
-
 
     render() {
         var style = (this.props.circular) ? this.style.circular : this.style.default;
