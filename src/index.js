@@ -90,7 +90,7 @@ class NumberPicker extends React.Component {
         };
     }
 
-    handleAction(event, v) {
+    handleAction(event) {
         let actionFilter = event.currentTarget.name;
         let currentValue = event.currentTarget.value.replace(",", ".").replace(/\D/g, '');
 

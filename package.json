@@ -2,6 +2,7 @@
   "name": "semantic-ui-react-numberpicker",
   "version": "0.0.1b",
   "description": "Number Picker Component for React Semantic UI",
+  "typings": "./index.d.ts",
   "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
