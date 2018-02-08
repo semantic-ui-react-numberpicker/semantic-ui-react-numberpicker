@@ -23,8 +23,62 @@ export const INCREASE_VALUE = 'INCREASE_VALUE';
  <Form.Field width="8" control={NumberPicker} basic label="basic buttons" placeholder="Enter a number" defaultValue={4} min={-40} max={40} step={2} />
 
 */
-const NumberPicker = React.createClass({
-    getDefaultProps: function () {
+
+
+class NumberPicker extends React.Component {
+
+    constructor() {
+        super();
+        this.propTypes = {
+            name: React.PropTypes.string.isRequired,
+            id: React.PropTypes.string,
+            value: React.PropTypes.any.isRequired,
+            onChange: React.PropTypes.func.isRequired,
+            placeholder: React.PropTypes.string,
+            min: React.PropTypes.number,
+            max: React.PropTypes.number,
+            step: React.PropTypes.number,
+            maxLength: React.PropTypes.number,
+            required: React.PropTypes.bool,
+            basic: React.PropTypes.bool,
+            circular: React.PropTypes.bool,
+            compact: React.PropTypes.bool
+        };
+
+        this.style = {
+            default: {
+                input: {
+                    borderRadius: "0px",
+                    textAlign: "right"
+                },
+                buttonLeft: {
+                    borderTopRightRadius: "0px",
+                    borderBottomRightRadius: "0px",
+                    margin: "0px"
+                },
+                buttonRight: {
+                    borderTopLeftRadius: "0px",
+                    borderBottomLeftRadius: "0px",
+                }
+            },
+            circular: {
+                input: {
+                    textAlign: "right"
+                },
+                buttonLeft: {
+                    marginRight: "3.5px"
+                },
+                buttonRight: {
+                    marginLeft: "3.5px"
+                }
+            }
+
+        };
+
+    }
+
+
+    getDefaultProps() {
         return {
             placeholder: "Enter a number",
             id: "",
@@ -44,29 +98,17 @@ const NumberPicker = React.createClass({
             classname_outer_input: "number_picker",
             classname_inner_input: "number_picker_input"
         };
-    },
-    propTypes: {
-        name: React.PropTypes.string.isRequired,
-        id: React.PropTypes.string,
-        value: React.PropTypes.any.isRequired,
-        onChange: React.PropTypes.func.isRequired,
-        placeholder: React.PropTypes.string,
-        min: React.PropTypes.number,
-        max: React.PropTypes.number,
-        step: React.PropTypes.number,
-        maxLength: React.PropTypes.number,
-        required: React.PropTypes.bool,
-        basic: React.PropTypes.bool,
-        circular: React.PropTypes.bool,
-        compact: React.PropTypes.bool
-    },
-    getInitialState: function () {
+    }
+
+    getInitialState() {
         return {
             touched: false,
             buffer: {}
         };
-    },
-    handleAction: function (event, v) {
+    }
+
+
+    handleAction(event, v) {
         let actionFilter = event.currentTarget.name;
         let currentValue = event.currentTarget.value.replace(",", ".").replace(/\D/g, '');
 
@@ -113,8 +155,10 @@ const NumberPicker = React.createClass({
             name: this.props.name,
             value: returnValue
         });
-    },
-    validateInput: function (event, v) {
+    }
+
+
+    validateInput(event, v) {
         let actionFilter = event.target.name;
         let currentValue = event.target.value;
 
@@ -133,37 +177,10 @@ const NumberPicker = React.createClass({
             default:
                 break;
         }
-    },
-    style: {
-        default: {
-            input: {
-                borderRadius: "0px",
-                textAlign: "right"
-            },
-            buttonLeft: {
-                borderTopRightRadius: "0px",
-                borderBottomRightRadius: "0px",
-                margin: "0px"
-            },
-            buttonRight: {
-                borderTopLeftRadius: "0px",
-                borderBottomLeftRadius: "0px",
-            }
-        },
-        circular: {
-            input: {
-                textAlign: "right"
-            },
-            buttonLeft: {
-                marginRight: "3.5px"
-            },
-            buttonRight: {
-                marginLeft: "3.5px"
-            }
-        }
+    }
 
-    },
-    render: function () {
+
+    render() {
         var style = (this.props.circular) ? this.style.circular : this.style.default;
         var display = {
             circular: this.props.circular,
@@ -258,6 +275,6 @@ const NumberPicker = React.createClass({
             /> </Input>
         );
     }
-});
+}
 
 export default NumberPicker;
