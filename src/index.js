@@ -78,8 +78,7 @@ class NumberPicker extends React.Component {
 
     }
 
-
-    getDefaultProps() {
+    static get defaultProps() {
         return {
             placeholder: "Enter a number",
             id: "",
