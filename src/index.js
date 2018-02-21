@@ -90,6 +90,7 @@ class NumberPicker extends React.Component {
         };
     }
 
+
     handleAction(event) {
         let actionFilter = event.currentTarget.name;
         let currentValue = event.currentTarget.value.replace(",", ".").replace(/\D/g, '');
@@ -220,6 +221,8 @@ class NumberPicker extends React.Component {
                       required={
                           this.props.required
                       }
+                      defaultValue={this.props.defaultValue}
+
                       value={
                           this.props.value
                       }

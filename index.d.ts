@@ -6,6 +6,7 @@ declare module 'semantic-ui-react-numberpicker' {
         name?: string;
         id?: string;
         value?: any;
+        defaultValue?: any;
         onChange?: (event: any) => void;
         placeholder?: string;
         min?: number;
