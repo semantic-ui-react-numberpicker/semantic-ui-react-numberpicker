@@ -1,6 +1,6 @@
 {
   "name": "semantic-ui-react-numberpicker",
-  "version": "0.0.1b",
+  "version": "0.0.1",
   "description": "Number Picker Component for React Semantic UI",
   "typings": "./index.d.ts",
   "main": "lib/index.js",
